@@ -1,0 +1,53 @@
+&star_job
+
+      load_saved_model = .true.
+      load_model_filename = 'shock_part2.mod'
+
+      save_model_when_terminate = .true.
+      save_model_filename = 'shock_part3.mod'
+      required_termination_code_string = 'extras_finish_step'
+
+      pgstar_flag = .true.
+
+/ ! end of star_job namelist
+
+
+&eos
+/ ! end of eos namelist
+
+&kap
+/ ! end of kap namelist
+
+&controls
+         
+      x_integer_ctrl(1) = 3 ! part number
+
+      !x_ctrl(12) = 0.028d0 ! Ni
+      x_ctrl(12) = 0.110d0 ! For a Stripped progenitor
+
+      x_ctrl(35) = 0
+      x_ctrl(36) = -0.6
+      x_ctrl(37) = 1d5 ! will discard center cells with u < this (cm/s), so don't count for Ni56.
+      x_ctrl(98) = 4.2    !Used to stop shock 3 at a earlier mas for 18M model
+
+! RTI      
+
+! equation controls
+      use_momentum_outer_BC = .true.
+
+! timestep controls
+
+! solver controls
+
+! mesh controls
+      split_merge_amr_okay_to_split_nz = .false.
+
+/ ! end of controls namelist
+
+&pgstar        
+         
+
+      ! Grid2_win_flag = .true.
+      Grid2_title = 'CCSN (Shock_3)'
+
+/ ! end of pgstar namelist

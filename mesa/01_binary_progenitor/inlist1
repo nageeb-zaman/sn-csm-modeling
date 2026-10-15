@@ -1,0 +1,123 @@
+
+&star_job
+
+    show_log_description_at_start = .false.
+
+    save_model_when_terminate = .true.
+    save_model_filename = '18M_to_4.7M.mod'
+    
+    pgstar_flag = .true.
+    
+    required_termination_code_string = 'xa_central_lower_limit'
+    !required_termination_code_string = 'max_model_number'
+    
+    write_profile_when_terminate = .true.
+    filename_for_profile_when_terminate = 'stripped_profile.data'
+    
+    !report_retries = .true.
+
+/ 
+
+&eos
+/
+
+
+&kap
+    use_Type2_opacities = .true.
+    Zbase = 0.02
+/
+
+
+
+&controls
+
+    xa_central_lower_limit_species(1) = 'he4'
+    xa_central_lower_limit(1) = 0.01
+    !envelope_mass_limit = 0.4 ! Msun
+    ! star_H_mass_max_limit = 0.01 
+    
+    mesh_delta_coeff = 1.0 ! 0.8
+    max_dq = 0.002
+    min_dq_for_xa = 1d-5
+
+    redo_limit = -1
+
+    solver_iters_timestep_limit = 5
+
+    !max_model_number = 49540
+
+    ! solver controls (MP)
+    tol_correction_norm = 3d-4 ! 3d-5
+    tol_max_correction = 3d-2 ! 3d-3
+
+    ! extra controls for timestep
+    ! these are for changes in mdot
+    delta_mdot_atol = 1d-10
+    delta_mdot_rtol = 0.1
+    delta_mdot_limit = 1
+    ! these are to properly resolve core hydrogen depletion
+    delta_lg_XH_cntr_limit = 0.02d0
+    delta_lg_XH_cntr_max = 0.0d0
+    delta_lg_XH_cntr_min = -6.0d0
+    delta_lg_XH_cntr_hard_limit = 0.03d0
+    ! these are to properly resolve core helium depletion
+    delta_lg_XHe_cntr_limit = 0.04d0 ! 0.02d0
+    delta_lg_XHe_cntr_max = 1.0d0 ! 0.0d0
+    delta_lg_XHe_cntr_min = -6.5d0 ! -6.0d0
+    delta_lg_XHe_cntr_hard_limit = 0.05d0 ! 0.03d0
+    ! these are to properly resolve core carbon depletion
+    delta_lg_XC_cntr_limit = 0.02d0
+    delta_lg_XC_cntr_max = 0.0d0
+    delta_lg_XC_cntr_min = -5.0d0
+    delta_lg_XC_cntr_hard_limit = 0.03d0
+    ! this is mainly to resolve properly when the star goes off the main sequence
+    delta_HR_limit = 0.005d0
+
+    extra_terminal_output_file = 'log1' 
+    photo_directory = 'photos1'
+    log_directory = 'LOGS1'
+
+    profile_interval = 50
+    history_interval = 1
+    terminal_interval = 1
+    write_header_frequency = 10
+    max_num_profile_models = 10000
+
+  ! stop when the center mass fraction of h1 drops below this limit
+    !xa_central_lower_limit_species(1) = 'c12'
+    !xa_central_lower_limit(1) = 1d-6
+
+    use_ledoux_criterion = .true.
+    mixing_length_alpha = 1.5
+    alpha_semiconvection = 0.01
+    thermohaline_coeff = 1d0
+    remove_small_D_limit = 1d-10
+    remove_mixing_glitches = .false.
+
+  ! wind options
+    !cool_wind_RGB_scheme = 'Kudritzki'
+    !cool_wind_AGB_scheme = 'Kudritzki'
+   
+  ! wind changes- try with Dutch
+    hot_wind_scheme = 'Dutch'
+    cool_wind_RGB_scheme = 'Dutch'
+    cool_wind_AGB_scheme = 'Dutch'
+    Dutch_wind_lowT_scheme = 'de Jager'
+    RGB_to_AGB_wind_switch = 1d-4
+    Dutch_scaling_factor = 1.0  ! same as wind eta
+
+  ! this is to avoid odd behaviour when a star switches from accreting to mass losing
+    max_mdot_jump_for_rotation = 1d99 
+
+    num_trace_history_values = 1
+    trace_history_value_name(1) = 'he_core_mass'
+ 
+
+/ 
+
+&pgstar
+
+      read_extra_pgstar_inlist(1) = .true.
+      extra_pgstar_inlist_name(1) = 'inlist_pgstar_1'
+   
+/ 

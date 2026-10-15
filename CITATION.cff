@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+title: "sn-csm-modeling: stripped-envelope supernova models with circumstellar interaction (MESA + STELLA + SuperLite)"
+authors:
+  - family-names: Zaman
+    given-names: Nageeb
+    orcid: "https://orcid.org/0009-0006-6787-461X"
+    affiliation: "Louisiana State University"
+license: MIT
+repository-code: "https://github.com/nageeb-zaman/sn-csm-modeling"

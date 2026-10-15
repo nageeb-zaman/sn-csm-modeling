@@ -1,0 +1,14 @@
+&stella
+     save_stella_data_when_terminate = .true.
+     save_stella_data_filename = 'mesa_18M_4.7M_e_2.0' ! Name of the stella data file that will be saved when the MESA run terminates. Will be saved in the same directory as the mesa output files.
+     stella_num_points = 300            ! total number of zones for stella files
+     stella_nz_extra = 0              ! number of zones for CSM; set to 0 to skip having CSM added
+     stella_min_surf_logRho = -100      ! prune surface cells in mesa model with density below this
+     stella_min_velocity = 0            ! use this as the minimum initial velocity for cells mesa.hyd file.
+     stella_skip_inner_dm = 0           !  skip this much of the mesa model for the stella files
+     stella_skip_inner_v_limit = 5d+07  ! skip inner cells in mesa model with v < this velocity (cm/s)
+     stella_mdot_years_for_wind = 1   ! these determine the CSM mass and size
+     stella_mdot_for_wind = 1.0d-03     ! Msun/year
+     stella_v_wind = 315.36d0                  ! km/s
+     stella_show_headers = .false.
+/ ! end of stella namelist

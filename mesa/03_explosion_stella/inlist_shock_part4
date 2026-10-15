@@ -1,0 +1,64 @@
+&star_job
+
+      load_saved_model = .true.
+      load_model_filename = 'shock_part3.mod'
+      !load_model_filename = 'shock_part2.mod'
+
+      save_model_when_terminate = .true.
+      save_model_filename = 'shock_part4.mod'
+      required_termination_code_string = 'extras_finish_step'
+
+      pgstar_flag = .true.
+
+/ ! end of star_job namelist
+
+
+&eos
+/ ! end of eos namelist
+
+&kap
+/ ! end of kap namelist
+
+&controls
+         
+      x_integer_ctrl(1) = 4 ! part number
+
+! RTI
+
+! equation controls
+      use_momentum_outer_BC = .true.
+
+! timestep controls
+   
+! mesh controls
+      split_merge_amr_okay_to_split_nz = .false.
+
+! solver controls
+
+! output controls
+
+      photo_interval = 50
+      profile_interval = 100
+      history_interval = 10
+      terminal_interval = 10
+
+      
+      !photo_interval = 10
+      !profile_interval = 1
+      !history_interval = 1
+      terminal_interval = 1
+      !max_number_retries = 0
+
+
+/ ! end of controls namelist
+
+&pgstar
+         
+Grid2_title = 'CCSN (Shock_4)'
+Profile_Panels1_xmin = -101 ! 1.9
+Profile_Panels2_xmin = -101 ! 1.9
+Abundance_xmin = -101 ! 1.9
+Mixing_xmin = -101 ! 1.9
+
+
+/ ! end of pgstar namelist

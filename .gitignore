@@ -1,0 +1,31 @@
+# OS / editor
+.DS_Store
+*.code-workspace
+.vscode/
+
+# Python
+__pycache__/
+*.pyc
+
+# MESA build + run products
+*.o
+*.mod
+!mesa/02_stripped_core_to_cc/lgTmax.mod
+!mesa/02_stripped_core_to_cc/18M_to_4.7M.mod
+!mesa/03_explosion_stella/*_Collapsed_Core.mod
+*.smod
+mesa/*/star
+mesa/*/binary
+mesa/*/LOGS*/
+mesa/*/photos*/
+mesa/*/png*/
+*.mp4
+
+# Generated outputs
+*.hyd
+*.abn
+*.png
+*.dat
+*.pdf
+data/*
+!data/README.md

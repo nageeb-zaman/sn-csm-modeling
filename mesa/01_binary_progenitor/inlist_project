@@ -1,0 +1,49 @@
+&binary_job
+
+   inlist_names(1) = 'inlist1' 
+   inlist_names(2) = 'inlist2'
+
+   ! evolve_both_stars = .false.
+   evolve_both_stars = .true.
+
+/ ! end of binary_job namelist
+
+&binary_controls
+   ! be 100% sure MB is always off
+   do_jdot_mb = .false.
+   do_jdot_missing_wind = .false.
+
+   mdot_scheme = "Kolb" ! Ritter    ! template from Sravan 2020 paper uses Kolb
+   mass_transfer_beta = 0.9         ! also from paper, mass transfer parameter
+   
+   m1 = 18.0d0  ! donor mass in Msun
+   m2 = 14.0d0  ! companion mass in Msun
+
+   initial_period_in_days = 365d0
+   mass_transfer_beta = 0.9
+   
+   ! timestep controls
+   fr = 0.02 ! 0.01
+   fr_limit = 2.5d-2
+   fm = 0.01
+   fm_limit = 1d-1
+   varcontrol_case_a = -1d0 !1d-4
+   varcontrol_case_b = 3d-4 !-1d0
+   varcontrol_ms = 1d-4
+   varcontrol_post_ms = 3d-4
+   dt_softening_factor = 0.4
+
+   limit_retention_by_mdot_edd = .false.
+   implicit_scheme_tolerance = 1d-2
+   max_tries_to_achieve = 200
+   min_change_factor = 1.025
+   max_change_factor = 1.1d0
+   initial_change_factor = 1.2d0
+   change_factor_fraction = 0.8d0
+   implicit_lambda = 0.4d0
+
+   min_mdot_for_implicit = 1d-10
+   !accretor_overflow_terminate = 100.0d0
+         
+/ ! end of binary_controls namelist
+
