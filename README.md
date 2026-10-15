@@ -76,4 +76,5 @@ under the GNU GPL v3 (`superlite/LICENSE`).
 ## Contact
 
 Nageeb Zaman, Department of Physics & Astronomy, Louisiana State University ·
+email: mzama14@lsu.edu
 ORCID [0009-0006-6787-461X](https://orcid.org/0009-0006-6787-461X)
